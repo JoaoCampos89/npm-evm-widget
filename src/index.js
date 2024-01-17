@@ -1,4 +1,4 @@
-import EthereumDarkblockWidget from "./lib/EthWidget"
-import EthUpgradeWidget from "./lib/EthUpgradeWidget"
+import EvmDarkblockWidget from "./lib/EvmWidget"
+import EvmUpgradeWidget from "./lib/EvmUpgradeWidget"
 
-export { EthereumDarkblockWidget, EthUpgradeWidget }
+export { EvmDarkblockWidget, EvmUpgradeWidget }

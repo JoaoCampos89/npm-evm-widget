@@ -3,7 +3,7 @@ import { Stack, utils, widgetMachine } from "@darkblock.io/shared-components"
 import { useMachine } from "@xstate/react"
 import signTypedData, { SIGNING_TYPE } from "../utils/signTypedData"
 
-const EthereumDarkblockWidget = ({
+const EvmDarkblockWidget = ({
   contractAddress,
   tokenId,
   w3 = null,
@@ -21,8 +21,7 @@ const EthereumDarkblockWidget = ({
   dev = false,
   dbConfig = null,
 }) => {
-  const upperNetwork = network.charAt(0).toUpperCase() + network.slice(1)
-  const platform = network.toLowerCase() === "mainnet" ? "Ethereum" : `Ethereum-${upperNetwork}`
+  const platform = network.toLowerCase() === "mainnet" ? "Ethereum" : platform
 
   const [state, send] = useMachine(() => widgetMachine(tokenId, contractAddress, platform, dev, dbConfig))
   const [address, setAddress] = useState(null)
@@ -156,4 +155,4 @@ const EthereumDarkblockWidget = ({
   return <Stack state={state} authenticate={() => send({ type: "SIGN" })} urls={stackMediaURLs} config={config} />
 }
 
-export default EthereumDarkblockWidget
+export default EvmDarkblockWidget

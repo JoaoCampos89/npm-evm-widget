@@ -1,7 +1,7 @@
 {
-  "name": "@darkblock.io/eth-widget",
+  "name": "@darkblock.io/evm-widget",
   "version": "0.0.1",
-  "description": "Darkblock.io React Component Library",
+  "description": "Darkblock.io React Component Library for EVM chains",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "author": "roberto@darkblock.io",

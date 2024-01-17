@@ -1,4 +1,3 @@
-
 const signInAndGetAccount = async (w3) => {
   try {
     const address = await w3.eth.getAccounts().then((data) => {
@@ -9,17 +8,11 @@ const signInAndGetAccount = async (w3) => {
     alert(`Please make sure you have Metamask installed : ${e.message}`)
   }
 }
-const signMessage = async (message, address) => {
+const signMessage = async (w3, message, address) => {
   // const message = "Hello World";
-  const from = address;
-  const params = [message, from];
-  const method = "personal_sign";
-  return await window.ethereum.request({
-    method,
-    params,
-    from,
-  });
-};
+  const from = address
+  return await w3.eth.personal.sign(message, from)
+}
 export const SIGNING_TYPE = {
   accessAuth: "access",
   upgradeNft: "upgradeNft",
@@ -44,13 +37,12 @@ const signTypedData = async (data, w3, type) => {
   }
   return new Promise(async (resolve, reject) => {
     try {
-      const signedMessage = await signMessage(msgParams, address);
-      resolve(signedMessage);
+      const signedMessage = await signMessage(w3, msgParams, address)
+      resolve(signedMessage)
     } catch (err) {
-      reject(err);
+      reject(err)
     }
-  });
-  
+  })
 }
 export default signTypedData
-// 
+//

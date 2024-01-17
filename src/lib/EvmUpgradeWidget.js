@@ -3,7 +3,7 @@ import { useMachine } from "@xstate/react"
 import { utils, Upgrader, upgradeMachine } from "@darkblock.io/shared-components"
 import signTypedData, { SIGNING_TYPE } from "../utils/signTypedData"
 
-const EthUpgradeWidget = ({
+const EvmUpgradeWidget = ({
   apiKey = null,
   contractAddress,
   tokenId,
@@ -21,8 +21,7 @@ const EthUpgradeWidget = ({
   },
   dev = false,
 }) => {
-  const upperNetwork = network.charAt(0).toUpperCase() + network.slice(1)
-  const platform = network.toLowerCase() === "mainnet" ? "Ethereum" : `Ethereum-${upperNetwork}`
+  const platform = network.toLowerCase() === "mainnet" ? "Ethereum" : platform
 
   const [state, send] = useMachine(() => upgradeMachine(tokenId, contractAddress, platform, dev))
   const [address, setAddress] = useState(null)
@@ -137,4 +136,4 @@ const EthUpgradeWidget = ({
   )
 }
 
-export default EthUpgradeWidget
+export default EvmUpgradeWidget
